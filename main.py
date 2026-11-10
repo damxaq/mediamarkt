@@ -65,9 +65,9 @@ def get_shops_data(link, shop_code, post_codes):
     for post in post_codes:
         with open("settings.json") as settings:
             x_flow_index = json.load(settings)
-        new_settings = {"index": x_flow_index["index"] + 1}
-        with open("settings.json", mode='w') as f:
-            f.write(json.dumps(new_settings, indent=2))
+        # new_settings = {"index": x_flow_index["index"] + 1}
+        # with open("settings.json", mode='w') as f:
+        #     f.write(json.dumps(new_settings, indent=2))
 
         x_flow_index = x_flow_index["index"] % len(x_flow_array)
         print(x_flow_index, x_flow_array[x_flow_index])
