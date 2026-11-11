@@ -5,12 +5,16 @@ from datetime import datetime
 from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from static import *
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
 @app.route('/index', methods=['GET'])
 def get_index():
-    client = MongoClient('mongodb://localhost:27017/')
+    load_dotenv()
+    MONGO_URI = os.getenv('MONGO_URI')
+    client = MongoClient(MONGO_URI)
     db = client['media-base']
     collection = db['settings'].find_one()
     print(collection['index'])
