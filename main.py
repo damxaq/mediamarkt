@@ -25,9 +25,9 @@ def add_to_index():
     return 'index increased'
 
 
-@app.route('/api/greet/<name>', methods=['GET'])
-def greet(name):
-    return jsonify({"message": f"Hello, {name}! Welcome to the API."})
+@app.route('/test', methods=['GET'])
+def greet():
+    return jsonify({"message": f"Hello! Welcome to the API."})
 
 
 def get_shops_data(link, shop_code, post_codes):
