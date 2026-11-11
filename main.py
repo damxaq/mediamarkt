@@ -12,13 +12,23 @@ app = Flask(__name__)
 
 @app.route('/index', methods=['GET'])
 def get_index():
-    load_dotenv()
-    MONGO_URI = os.getenv('MONGO_URI')
-    client = MongoClient(MONGO_URI)
-    db = client['media-base']
-    collection = db['settings'].find_one()
-    print(collection['index'])
-    return str(collection['index'])
+    uri = "mongodb+srv://Vercel-Admin-media-base:Qu5Y30VYqmF4GA1X@media-base.ufxe4cp.mongodb.net/?retryWrites=true&w=majority"
+    client = MongoClient(uri)
+    try:
+        client.admin.command("ping")
+        print("Connected successfully")
+        client.close()
+    except Exception as e:
+        raise Exception(
+            "The following error occurred: ", e)
+    return "jo"
+    # load_dotenv()
+    # MONGO_URI = os.getenv('MONGO_URI')
+    # client = MongoClient(MONGO_URI)
+    # db = client['media-base']
+    # collection = db['settings'].find_one()
+    # print(collection['index'])
+    # return str(collection['index'])
 
 
 @app.route('/add', methods=['GET'])
