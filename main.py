@@ -21,14 +21,14 @@ def get_index():
     except Exception as e:
         raise Exception(
             "The following error occurred: ", e)
-    return "jo"
+    # return "jo"
     # load_dotenv()
     # MONGO_URI = os.getenv('MONGO_URI')
     # client = MongoClient(MONGO_URI)
-    # db = client['media-base']
-    # collection = db['settings'].find_one()
-    # print(collection['index'])
-    # return str(collection['index'])
+    db = client['media-base']
+    collection = db['settings'].find_one()
+    print(collection['index'])
+    return str(collection['index'])
 
 
 @app.route('/add', methods=['GET'])
