@@ -17,7 +17,6 @@ def get_index():
     try:
         client.admin.command("ping")
         print("Connected successfully")
-        client.close()
     except Exception as e:
         raise Exception(
             "The following error occurred: ", e)
@@ -28,6 +27,7 @@ def get_index():
     db = client['media-base']
     collection = db['settings'].find_one()
     print(collection['index'])
+    client.close()
     return str(collection['index'])
 
 
